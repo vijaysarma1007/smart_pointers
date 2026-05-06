@@ -16,7 +16,6 @@ enum LinkedListUsingReference<'a, T> {
     },
 }
 
-
 fn main() {
     let second_node = LinkedListUsingReference::Node {
         value: 2,
@@ -39,5 +38,4 @@ fn main() {
     };
 
     drop(frist_note);
-  
 }
