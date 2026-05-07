@@ -23,28 +23,23 @@ impl BinarySearchTree {
                     left: Box::new(BinarySearchTree::Empty),
                     right: Box::new(BinarySearchTree::Empty),
                 }
-            },
-            BinarySearchTree::Node { value, left, right } => {
-                   match new_value.cmp(value) {
-                    Ordering::Equal => (),
-                    Ordering::Less => left.insert(new_value),
-                    Ordering::Greater => right.insert(new_value),
-                   }
-                   
             }
+            BinarySearchTree::Node { value, left, right } => match new_value.cmp(value) {
+                Ordering::Equal => (),
+                Ordering::Less => left.insert(new_value),
+                Ordering::Greater => right.insert(new_value),
+            },
         }
     }
 
-    fn contains(&self, target:i32) -> bool {
-        match self{
+    fn contains(&self, target: i32) -> bool {
+        match self {
             BinarySearchTree::Empty => false,
-            BinarySearchTree::Node { value, left, right } => {
-                match  target.cmp(value) {
-                    Ordering::Equal => true,
-                    Ordering::Less => left.contains(target),
-                    Ordering::Greater => right.contains(target)
-                }
-            }
+            BinarySearchTree::Node { value, left, right } => match target.cmp(value) {
+                Ordering::Equal => true,
+                Ordering::Less => left.contains(target),
+                Ordering::Greater => right.contains(target),
+            },
         }
     }
 }
